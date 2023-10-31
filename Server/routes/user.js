@@ -50,7 +50,6 @@ router.post('/signup',(request , response)=>{
 //with JSON-TOKEN
 router.post('/signin',(request , response)=>{
     const{ email, password}= request.body
-
     const encryptedPassword = String(crypto.SHA256(password))
 
     const statement = `select id , firstName, lastName from user where email= ? and password = ?  `
