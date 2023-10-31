@@ -1,0 +1,26 @@
+create database notes_db;
+
+create table user(
+id integer primary key auto_increment,
+firstName varchar(20),
+lastName varchar(20),
+password varchar(20),
+email varchar(30),
+);
+
+create table note(
+id int  auto_increment primary key,
+userId integer,
+title varchar(50),
+details varchar(255)
+);
+
+
+ALTER TABLE note
+ADD CONSTRAINT userId
+FOREIGN KEY (userId)
+REFERENCES user (id);
+
+
+select concat(firstName ,' ', lastName) as name, title , details from user join note on
+ user.id = note.userId ;

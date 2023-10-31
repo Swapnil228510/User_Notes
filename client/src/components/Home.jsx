@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { createUrl } from "../utils/utils";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { signinUser } from "../axioscall/NoteAxios";
 
 export default function Home() {
 
@@ -26,8 +27,10 @@ const logIn= async()=>{
                 email : email,
                 password : password
             }
-            console.log(" email "+email+" password "+password)
-            const response = await axios.post(url,body)
+            // console.log(" email "+email+" password "+password)
+
+            const response = await signinUser(url,body)
+            // const response = await axios.post(url,body)
             // console.log(response)
 
             if(response.data['status'] === 'success'){
